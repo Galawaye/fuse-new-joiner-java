@@ -65,7 +65,7 @@ public class IexRestControllerTest extends ASpringTest {
             // src/test/resources/wiremock/mappings/mapping-lastTradedPrice.json
             .accept(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$[0].symbol", is("FB")))
+        .andExpect(jsonPath("$[0].symbol", is("AAPL")))
         .andExpect(jsonPath("$[0].price").value(new BigDecimal("186.34")))
         .andReturn();
   }
