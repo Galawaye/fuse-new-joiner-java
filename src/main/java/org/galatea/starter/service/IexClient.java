@@ -1,9 +1,12 @@
 package org.galatea.starter.service;
 
+import java.util.Date;
 import java.util.List;
+import org.galatea.starter.domain.IexHistoricalPrices;
 import org.galatea.starter.domain.IexLastTradedPrice;
 import org.galatea.starter.domain.IexSymbol;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,5 +34,20 @@ public interface IexClient {
    */
   @GetMapping("/tops/last")
   List<IexLastTradedPrice> getLastTradedPriceForSymbols(@RequestParam("symbols") String[] symbols);
+
+  //todo:this calls the iex api?
+
+  /**
+   * Get the adjusted and unadjusted historical data for up to 15 years.
+   *
+   * @param symbols the list of symbols to get a last traded price for.
+   * @param range a string representing a date range (ie: 5y)
+   * @param date a date object
+   * @return Returns adjusted and unadjusted historical data for up to 15 years, and historical
+   *      minute-by-minute intraday prices for the last 30 trailing calendar days.
+   */
+  @GetMapping("/stock/{symbol}/chart/{range}/{date}")
+  List<IexHistoricalPrices> getHistoricalPrices(@RequestParam("symbols") String[] symbols,
+      @RequestParam("range") String range, @DateTimeFormat(pattern = "yyyyMMdd") Date date);
 
 }

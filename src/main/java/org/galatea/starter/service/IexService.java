@@ -1,10 +1,12 @@
 package org.galatea.starter.service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.galatea.starter.domain.IexHistoricalPrices;
 import org.galatea.starter.domain.IexLastTradedPrice;
 import org.galatea.starter.domain.IexSymbol;
 import org.springframework.stereotype.Service;
@@ -45,5 +47,19 @@ public class IexService {
     }
   }
 
+  //todo:
+
+  /**
+   * Get the adjusted and unadjusted historical data for up to 15 years.
+   *
+   * @param symbols the list of symbols to get a last traded price for.
+   * @param range a string representing a date range (ie: 5y)
+   * @param date a date object
+   * @return json object with the historical prices for specified date &/or range
+   */
+  public List<IexHistoricalPrices> getHistoricalPrices(final List<String> symbols,
+      final String range, final Date date) {
+    return iexClient.getHistoricalPrices(symbols.toArray(new String[0]), range, date);
+  }
 
 }
