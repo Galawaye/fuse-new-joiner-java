@@ -24,7 +24,7 @@ public interface IexClient {
    * @return a list of all of the stock symbols supported by IEX.
    */
   @GetMapping("/ref-data/symbols")
-  List<IexSymbol> getAllSymbols();
+  List<IexSymbol> getAllSymbols(@RequestParam("token") String token);
 
   /**
    * Get the last traded price for each stock symbol passed in. See https://iextrading.com/developer/docs/#last.
@@ -33,7 +33,9 @@ public interface IexClient {
    * @return a list of the last traded price for each of the symbols passed in.
    */
   @GetMapping("/tops/last")
-  List<IexLastTradedPrice> getLastTradedPriceForSymbols(@RequestParam("symbols") String[] symbols);
+  List<IexLastTradedPrice> getLastTradedPriceForSymbols(
+      @RequestParam("symbols") String[] symbols,
+      @RequestParam("token") String token);
 
   //todo:this calls the iex api?
 
@@ -41,13 +43,14 @@ public interface IexClient {
    * Get the adjusted and unadjusted historical data for up to 15 years.
    *
    * @param symbols the list of symbols to get a last traded price for.
-   * @param range a string representing a date range (ie: 5y)
    * @param date a date object
    * @return Returns adjusted and unadjusted historical data for up to 15 years, and historical
    *      minute-by-minute intraday prices for the last 30 trailing calendar days.
    */
-  @GetMapping("/stock/{symbol}/chart/{range}/{date}")
-  List<IexHistoricalPrices> getHistoricalPrices(@RequestParam("symbols") String[] symbols,
-      @RequestParam("range") String range, @DateTimeFormat(pattern = "yyyyMMdd") Date date);
+  @GetMapping("/data/CORE/HISTORICAL_PRICES/{symbols}?range=from{date}")
+  List<IexHistoricalPrices> getHistoricalPrices(
+      @RequestParam("symbols") String[] symbols,
+      @DateTimeFormat(pattern = "yyyyMMdd") Date date,
+      @RequestParam("token") String token);
 
 }

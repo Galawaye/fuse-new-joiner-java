@@ -55,7 +55,6 @@ public class IexRestController {
    * Get the adjusted and unadjusted historical data for up to 15 years.
    *
    * @param symbols the list of symbols to get a last traded price for.
-   * @param range a string representing a date range (ie: 5y)
    * @param date a date object
    * @return filtered json response
    */
@@ -63,9 +62,8 @@ public class IexRestController {
       MediaType.APPLICATION_JSON_VALUE})
   public List<IexHistoricalPrices> getHistoricalPrices(
       @RequestParam(value = "symbols") final List<String> symbols,
-      @RequestParam(value = "range") final String range,
       @DateTimeFormat(pattern = "yyyy-MM-dd") final Date date) {
-    return iexService.getHistoricalPrices(symbols, range, date);
+    return iexService.getHistoricalPrices(symbols, date);
   }
 
 }

@@ -38,6 +38,9 @@ log.level.org.galatea.starter.service.IEXClient: DEBUG
 # CONDITIONS EVALUATION REPORT on startup
 logging.level.org.springframework.boot.autoconfigure: INFO
 
+authorization:
+   api-token: pk_441df8ba327748c1acf0099c4bb7aa68
+
 ---
 # Test properties go here
 spring:
@@ -57,7 +60,7 @@ spring:
       username: sa
       password:
    rest:
-      iexBasePath: https://api.iextrading.com/1.0
+      iexBasePath: https://api.iex.cloud/v1
 # set debug to get spring to log the classpath (and other things) on startup
 debug: true
 
