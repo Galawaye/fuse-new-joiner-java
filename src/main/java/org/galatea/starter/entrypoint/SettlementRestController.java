@@ -9,7 +9,7 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.aspect4log.Log;
 import net.sf.aspect4log.Log.Level;
-import org.galatea.starter.config.MvcConfig;
+import org.galatea.starter.MvcConfig;
 import org.galatea.starter.domain.SettlementMission;
 import org.galatea.starter.domain.TradeAgreement;
 import org.galatea.starter.entrypoint.exception.EntityNotFoundException;

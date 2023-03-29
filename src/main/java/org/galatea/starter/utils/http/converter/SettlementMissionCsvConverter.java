@@ -3,7 +3,7 @@ package org.galatea.starter.utils.http.converter;
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.Charsets;
-import org.galatea.starter.config.MvcConfig;
+import org.galatea.starter.MvcConfig;
 import org.galatea.starter.domain.SettlementMission;
 import org.galatea.starter.entrypoint.messagecontracts.SettlementMissionList;
 import org.springframework.http.HttpHeaders;

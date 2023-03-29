@@ -1,4 +1,4 @@
-package org.galatea.starter.config;
+package org.galatea.starter;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

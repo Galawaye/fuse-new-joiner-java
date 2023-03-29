@@ -1,4 +1,4 @@
-package org.galatea.starter.config;
+package org.galatea.starter;
 
 import feign.Logger;
 import lombok.extern.slf4j.Slf4j;

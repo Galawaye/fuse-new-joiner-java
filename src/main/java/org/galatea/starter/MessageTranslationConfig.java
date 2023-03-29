@@ -1,4 +1,4 @@
-package org.galatea.starter.config;
+package org.galatea.starter;
 
 import java.util.List;
 import java.util.stream.Collectors;

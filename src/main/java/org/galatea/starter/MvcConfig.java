@@ -1,4 +1,4 @@
-package org.galatea.starter.config;
+package org.galatea.starter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Sets;
