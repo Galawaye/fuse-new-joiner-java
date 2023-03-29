@@ -71,10 +71,9 @@ public class AppConfig {
    *
    * @return the Feign log level.
    */
-  //todo: feign client logger
   @Bean
   public Logger.Level logLevel() {
-    return Logger.Level.BASIC;
+    return Logger.Level.FULL;
   }
 
 }

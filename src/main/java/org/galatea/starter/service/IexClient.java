@@ -2,19 +2,21 @@ package org.galatea.starter.service;
 
 import java.util.Date;
 import java.util.List;
+import org.galatea.starter.AppConfig;
 import org.galatea.starter.domain.IexHistoricalPrices;
 import org.galatea.starter.domain.IexLastTradedPrice;
 import org.galatea.starter.domain.IexSymbol;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * A Feign Declarative REST Client to access endpoints from the Free and Open IEX API to get market
  * data. See https://iextrading.com/developer/docs/
  */
-@FeignClient(name = "IEX", url = "${spring.rest.iexBasePath}")
+@FeignClient(name = "IEX", url = "${spring.rest.iexBasePath}", configuration = AppConfig.class)
 public interface IexClient {
 
   /**
@@ -27,7 +29,8 @@ public interface IexClient {
   List<IexSymbol> getAllSymbols(@RequestParam("token") String token);
 
   /**
-   * Get the last traded price for each stock symbol passed in. See https://iextrading.com/developer/docs/#last.
+   * Get the last traded price for each stock symbol passed in. See
+   * https://iextrading.com/developer/docs/#last.
    *
    * @param symbols stock symbols to get last traded price for.
    * @return a list of the last traded price for each of the symbols passed in.
@@ -43,15 +46,15 @@ public interface IexClient {
    * Get the adjusted and unadjusted historical data for up to 15 years.
    *
    * @param symbols the list of symbols to get a last traded price for.
-   * @param date a date object
+   * @param range a date object
    * @return Returns adjusted and unadjusted historical data for up to 15 years, and historical
-   *      minute-by-minute intraday prices for the last 30 trailing calendar days.
+   *     minute-by-minute intraday prices for the last 30 trailing calendar days.
    */
-  @GetMapping("/data/CORE/HISTORICAL_PRICES/{symbols}?range=from{date}")
+  @GetMapping("/data/CORE/HISTORICAL_PRICES/{symbols}")
   List<IexHistoricalPrices> getHistoricalPrices(
-      @RequestParam("symbols") String[] symbols,
-      @RequestParam("date")
-      @DateTimeFormat(pattern = "yyyyMMdd") Date date,
+      @PathVariable("symbols") String[] symbols,
+      @RequestParam("range=from")
+      @DateTimeFormat(pattern = "yyyy-MM-dd") Date range,
       @RequestParam("token") String token);
 
 }
