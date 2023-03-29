@@ -50,6 +50,7 @@ public interface IexClient {
   @GetMapping("/data/CORE/HISTORICAL_PRICES/{symbols}?range=from{date}")
   List<IexHistoricalPrices> getHistoricalPrices(
       @RequestParam("symbols") String[] symbols,
+      @RequestParam("date")
       @DateTimeFormat(pattern = "yyyyMMdd") Date date,
       @RequestParam("token") String token);
 

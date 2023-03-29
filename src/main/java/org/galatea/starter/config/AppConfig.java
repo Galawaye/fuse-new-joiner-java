@@ -1,4 +1,4 @@
-package org.galatea.starter;
+package org.galatea.starter.config;
 
 import feign.Logger;
 import lombok.extern.slf4j.Slf4j;
@@ -71,6 +71,7 @@ public class AppConfig {
    *
    * @return the Feign log level.
    */
+  //todo: feign client logger
   @Bean
   public Logger.Level logLevel() {
     return Logger.Level.BASIC;

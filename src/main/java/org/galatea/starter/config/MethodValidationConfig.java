@@ -1,4 +1,4 @@
-package org.galatea.starter;
+package org.galatea.starter.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

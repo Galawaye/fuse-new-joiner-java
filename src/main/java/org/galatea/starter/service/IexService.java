@@ -51,8 +51,6 @@ public class IexService {
     }
   }
 
-  //todo:
-
   /**
    * Get the adjusted and unadjusted historical data for up to 15 years.
    *

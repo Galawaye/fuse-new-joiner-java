@@ -1,4 +1,4 @@
-package org.galatea.starter;
+package org.galatea.starter.config;
 
 import java.util.function.BiConsumer;
 import javax.jms.ConnectionFactory;

@@ -1,4 +1,4 @@
-package org.galatea.starter;
+package org.galatea.starter.config;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import java.util.List;
