@@ -2,7 +2,7 @@
   "id": "4dc720df-b9cd-465e-a27e-68ccdb49ef31",
   "name": "ref-data_symbols",
   "request": {
-    "url": "/iex/symbols?token=pk_441df8ba327748c1acf0099c4bb7aa68",
+    "url": "/ref-data/symbols?token=pk_441df8ba327748c1acf0099c4bb7aa68",
     "method": "GET"
   },
   "response": {
