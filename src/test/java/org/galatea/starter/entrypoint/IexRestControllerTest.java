@@ -86,7 +86,7 @@ public class IexRestControllerTest extends ASpringTest {
   public void testGetHistoricalPrices() throws Exception {
     MvcResult result = this.mvc.perform(
             org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-                .get("/iex/historicalPrices?symbols=ibm")
+                .get("/iex/historicalPrices?symbols=ibm&range=1999-03-29") //todo: change mappings to match iexClient
                 .accept(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$[0].close", is("129.34")))
